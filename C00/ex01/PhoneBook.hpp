@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:57:36 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/12/02 01:51:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/12/02 18:28:06 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook{
     int         index;
     
     Contact     contacts[SIZE];
-    void        displayContact(std::string index);
+    bool        displayContact(int index);
     void        displayAllContacts(void);
     void        printLine(void);
     void        printHeader(void);

@@ -6,13 +6,14 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:32:48 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/12/02 01:52:53 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/12/02 19:53:49 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <iostream>
+#include <sstream>
 
 
 PhoneBook::PhoneBook(void){
@@ -22,10 +23,11 @@ PhoneBook::PhoneBook(void){
 void PhoneBook::addContact(void){
     std::string text;
     
-    if (this->index == 7)
+    if (this->index == 8)
         this->index = 0;
     std::cout << "-----Adding contact-----" << '\n';
     this->contacts[index].setFirstName().setLastName().setNickname().setPhoneNumber().setDarkestSecret().setIndex(this->index).setNotEmpty();
+    std::cout << "------------------------" << '\n';
     this->index++;
 }
 /*
@@ -70,7 +72,8 @@ void PhoneBook::displayAllContacts(void){
     printHeader();
     printLine();
     //printRows
-    for(int i = 0; i < SIZE ; i++){
+    for(int i = 0; i < 8 ; i++){
+        // std::cout << "i: " << i << '\n';
         c = this->contacts[i];
         if (!this->contacts[i].isEmpty())
             std::cout << '|' << printColumn(std::to_string(c.getIndex())) << '|' << printColumn(c.getFirstName()) << '|' << printColumn(c.getLastName()) << '|' << printColumn(c.getNickname()) << "|\n";
@@ -78,21 +81,57 @@ void PhoneBook::displayAllContacts(void){
     printLine();
 }
 
-void PhoneBook::displayContact(std::string index){
-    (void) index;
+bool PhoneBook::displayContact(int idx)
+{
+    Contact c;
+    for (int i = 0; i < SIZE; i++)
+    {
+        if (idx >= 0 && idx < 8 && !this->contacts[idx].isEmpty())
+        {
+            c = this->contacts[idx];
+            std::cout << '\n';
+            std::cout << "-----Full Contact Information-----" << '\n';
+            std::cout << "Index:          " << c.getIndex() << '\n';
+            std::cout << "First Name:     " << c.getFirstName() << '\n';
+            std::cout << "Last Name:      " << c.getLastName() << '\n';
+            std::cout << "Nickname:       " << c.getNickname() << '\n';
+            std::cout << "Phone Number:   " << c.getPhoneNumber() << '\n';
+            std::cout << "Darkest Secret: " << c.getDarkestSecret() << '\n';
+            std::cout << "----------------------------------" << '\n';
+            break ;
+        }
+        else
+            return (false);
+    }
+    return (true);
+}
+
+bool stringToInt(int &i, std::string index)
+{
+    std::stringstream ss(index);
+    
+    ss >> i;
+    if (ss.fail())
+    {
+        // not an integer
+        return false;
+    }
+    return true;
 }
 
 void PhoneBook::search(void){
     std::string index;
-    
+    int i = 0;
     this->displayAllContacts();
+    
     while (true)
     {
         std::cout << "Enter Index > ";
         std::getline(std::cin, index);
         std::cin >> index;
-        if (index.size())
-            return(this->displayContact(index));
+        if (index.size() && stringToInt(i, index))
+            if(this->displayContact(i))
+                return ;
     }
 }
 
