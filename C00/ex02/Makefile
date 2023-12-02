@@ -1,6 +1,6 @@
 NAME	= phonebook
 
-SRC		= PhoneBook.cpp Contact.cpp main.cpp
+SRC		= main.cpp
 OBJ		= $(SRC:%.cpp=%.o)
 
 CC		= c++
@@ -33,7 +33,8 @@ push:
        (cd $$dir && make fclean 2> /dev/null) \
     done
 	@read -p "Enter comment for git push:" comment;\
-	(cd .. && git add . && git commit -m "$$comment"  && git push )\
-
+	git add .  ;\
+    git commit -m "$$comment"  ;\
+	git push \
 
 .PHONY: all clean fclean re
