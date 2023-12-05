@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:32:48 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/12/02 19:53:49 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:39:53 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <sstream>
-
+#include <iomanip>
 
 PhoneBook::PhoneBook(void){
    this->index = 0;
@@ -72,12 +72,14 @@ void PhoneBook::displayAllContacts(void){
     printHeader();
     printLine();
     //printRows
-    for(int i = 0; i < 8 ; i++){
-        // std::cout << "i: " << i << '\n';
+    for(int i = 0; i < 8 ; i++)
+    {
         c = this->contacts[i];
+         std::ostringstream ss;
+        ss << c.getIndex();
         if (!this->contacts[i].isEmpty())
-            std::cout << '|' << printColumn(std::to_string(c.getIndex())) << '|' << printColumn(c.getFirstName()) << '|' << printColumn(c.getLastName()) << '|' << printColumn(c.getNickname()) << "|\n";
-        }
+            std::cout << '|' << printColumn(ss.str()) << '|' << printColumn(c.getFirstName()) << '|' << printColumn(c.getLastName()) << '|' << printColumn(c.getNickname()) <<  "|\n";
+    }
     printLine();
 }
 

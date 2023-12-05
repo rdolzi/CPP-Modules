@@ -6,12 +6,12 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:32:32 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/11/28 22:51:01 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:56:16 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <iostream>
+#include <cstring>
 
 int main(int argc, char **argv)
 {
