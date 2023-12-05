@@ -35,4 +35,7 @@ push:
 	@read -p "Enter comment for git push:" comment;\
 	(cd .. && git add . && git commit -m "$$comment"  && git push )\
 
+status:
+	(cd ../.. && pwd && git status)
+
 .PHONY: all clean fclean re push
