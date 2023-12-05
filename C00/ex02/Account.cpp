@@ -6,12 +6,13 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:57:22 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/12/05 17:40:22 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:43:45 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
  
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -20,7 +21,7 @@ int Account::_totalNbWithdrawals = 0;
 
 void displayTimestamp(void)
 {
-    std::time_t currentTime = std::time(nullptr);
+    std::time_t currentTime = std::time(NULL);
     std::string timestamp(16, 'r');
 
     std::strftime((char *)timestamp.data(), timestamp.size(), "%Y%m%d_%H%M%S", std::localtime(&currentTime));
