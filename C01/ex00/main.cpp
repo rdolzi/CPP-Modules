@@ -12,11 +12,6 @@
 
 #include <iostream>
 #include "Zombie.hpp"
-// First, implement a Zombie class. It has a string private attribute name.
-// Add a member function void announce( void ); to the Zombie class. Zombies announce themselves as follows:
-//     <name>: BraiiiiiiinnnzzzZ...
-// Don’t print the angle brackets (< and >). For a zombie named Foo, the message would be:
-//     Foo: BraiiiiiiinnnzzzZ...
 
 int main()
 {
@@ -31,5 +26,10 @@ int main()
     zombie_HEAP->announce();
     delete zombie_HEAP;
 
+    Zombie *zombie;
+    zombie = newZombie("zombie_heap");
+    zombie->announce();
+    delete zombie;
+    
     return (0);
 }

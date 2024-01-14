@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
 #include <string>
 #include <iostream>
 
@@ -26,3 +29,5 @@ public:
 };
 
 Zombie *zombieHorde(int N, std::string name);
+
+#endif
