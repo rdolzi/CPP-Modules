@@ -1,20 +1,28 @@
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef FIXED_H
+#define FIXED_H
 
 #include <iostream>
-class Fixed
-{
+
+class Fixed {
 private:
-    int value;
+    int fixedPointValue;
     static const int fractionalBits;
 
 public:
-    Fixed();
-    Fixed(const Fixed &other);
-    Fixed &operator=(const Fixed &other);
-    ~Fixed();
-    int getRawBits() const;
-    void setRawBits(int const raw);
+    Fixed();                                    
+    Fixed(const Fixed& copyConstructor);       
+    Fixed(const int intValue);                  
+    Fixed(const float floatValue);              
+    ~Fixed();                                  
+    Fixed& operator=(const Fixed& copyAssignmentOperator); 
+
+    int     getRawBits() const;
+    void    setRawBits(int const raw);
+    float   toFloat() const;
+    int     toInt() const;
 };
+
+// Insertion operator overload
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed); 
 
 #endif
